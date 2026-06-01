@@ -799,7 +799,7 @@ with tab2:
         classifiers = {
             "Random Forest":       RandomForestClassifier(n_estimators=n_trees, random_state=42),
             "Gradient Boosting":   GradientBoostingClassifier(n_estimators=100, random_state=42),
-            "AdaBoost":            AdaBoostClassifier(n_estimators=100, random_state=42, algorithm="SAMME"),
+            "AdaBoost":            AdaBoostClassifier(n_estimators=100, random_state=42),
             "Logistic Regression": LogisticRegression(max_iter=1000, random_state=42),
             "Decision Tree":       DecisionTreeClassifier(random_state=42),
             "K-Nearest Neighbors": KNeighborsClassifier(n_neighbors=7),
