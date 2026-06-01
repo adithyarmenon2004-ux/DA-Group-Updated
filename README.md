@@ -1,49 +1,60 @@
-# UAE Customer Intelligence Dashboard
+# UAE Customer Analytics Dashboard
 
-## What's Inside
-- `app.py` — the full Streamlit app (all fixes + enhancements)
-- `requirements.txt` — Python dependencies
-- `uae_customers_2000_improved.csv` — sample dataset
+## Setup & Run
 
-## Changes Made
-
-### 🐛 Bug Fix
-- **AdaBoost error fixed**: Removed deprecated `algorithm="SAMME"` parameter
-  (removed in scikit-learn ≥ 1.6). The app now uses the default which is
-  equivalent and works on all recent scikit-learn versions.
-
-### ✅ All Features Included
-
-1. **Classification (Tab: 🎯)** — 8 algorithms compared:
-   Random Forest, Gradient Boosting, AdaBoost, Logistic Regression,
-   Decision Tree, KNN, Naive Bayes, SVM — with Accuracy/Precision/Recall/F1
-   comparison table + grouped bar chart + combined ROC curves.
-
-2. **ARIMA Forecasting (Tab: 📉)** — Configurable p/q orders, forecast horizon,
-   95% confidence intervals, residual diagnostics.
-
-3. **Drilled-Down EDA (Tab: 🔍)** — Cross-segment heatmap, Sunburst drill-down,
-   cross-segment summary statistics, outlier detection.
-
-4. **Hierarchical Clustering + Dendrogram (Tab: 👥)** — Interactive dendrogram
-   with linkage method selector, Agglomerative vs K-Means silhouette comparison.
-
-5. **Association Rules Scatter Plot (Tab: 🔗)** — Support vs Confidence bubble
-   scatter (size = Lift) with hover details.
-
-6. **What-If Simulator (Tab: 🎛)** — Dropdowns for categoricals, sliders for
-   numerics, gauge chart, sensitivity analysis curve.
-
-7. **Elbow Method + Silhouette Score (Tab: 👥)** — Side-by-side elbow (inertia)
-   and silhouette score plots with best-k annotation.
-
-## How to Run
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Deploying to Streamlit Cloud
-1. Push to a GitHub repo
-2. Connect at share.streamlit.io
-3. Set main file to `app.py`
+Place your CSV file (`uae_customers_2000_improved.csv`) in the same folder.  
+The app auto-generates sample data if the file is not found.
+
+---
+
+## Features
+
+### 1. 📊 EDA — Drilled-Down Analysis
+- Dynamic primary + secondary dimension breakdown
+- Aggregation: Mean / Sum / Count / Median
+- Correlation heatmap with selectable columns
+- Scatter drill-down with OLS trendline, colour & size encoding
+- Box plots by category
+- KPI summary row
+
+### 2. 🤖 Classification — All Algorithms
+Trains **10 classifiers** simultaneously:
+- Logistic Regression, Decision Tree, Random Forest, Gradient Boosting,
+  AdaBoost, Extra Trees, SVM, KNN, Naive Bayes, Neural Network (MLP)
+
+Outputs: Accuracy · Precision · Recall · F1 · AUC-ROC comparison table,
+grouped bar chart, radar chart, confusion matrices (top 4), feature importance.
+
+### 3. 📈 ARIMA Forecasting
+- ADF stationarity test
+- Seasonal decomposition (if ≥24 data points)
+- Configurable p / d / q sliders
+- Forecast with 95% confidence interval
+- MAE · RMSE · AIC · BIC metrics + forecast table
+
+### 4. 🔗 Clustering
+- **Elbow method** (inertia) + **Silhouette score** side-by-side
+- K-Means scatter with cluster profiles table
+- **Hierarchical clustering** with interactive Dendrogram
+- Agglomerative clustering scatter
+- Adjusted Rand Index (KMeans vs HC comparison)
+
+### 5. 🛒 Association Rule Mining
+- Apriori with min-support / confidence / lift controls
+- Rules table with gradient highlight
+- **Scatter plot**: Support × Confidence sized by Lift
+- Top-15 rules bar chart
+- Lift distribution histogram
+
+### 6. 🎛️ What-If Simulator
+- Drop-down menus for categorical features
+- Sliders for numeric features (auto-scaled to data range)
+- Random Forest prediction with confidence %
+- Class probability bar chart
+- Percentile position in distribution
+- **Sensitivity analysis** — vary any feature and see prediction change
