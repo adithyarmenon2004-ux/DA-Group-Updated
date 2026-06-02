@@ -13,11 +13,50 @@ st.set_page_config(page_title="UAE Customer Analytics", layout="wide", page_icon
 st.markdown("""
 <style>
     .block-container { padding-top: 1rem; }
-    .stTabs [data-baseweb="tab-list"] { gap: 6px; }
-    .stTabs [data-baseweb="tab"] { padding: 8px 16px; border-radius: 6px; }
+
+    /* ── Tab bar ── */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 4px;
+        background-color: #f1f5f9;
+        padding: 6px 8px;
+        border-radius: 10px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        padding: 8px 18px;
+        border-radius: 7px;
+        background-color: #ffffff;
+        color: #1e293b !important;
+        font-weight: 600;
+        font-size: 0.85rem;
+        border: 1px solid #e2e8f0;
+    }
+    /* Active / selected tab */
+    .stTabs [aria-selected="true"] {
+        background-color: #2563eb !important;
+        color: #ffffff !important;
+        border-color: #2563eb !important;
+    }
+    /* Hover */
+    .stTabs [data-baseweb="tab"]:hover {
+        background-color: #dbeafe !important;
+        color: #1e40af !important;
+    }
+    /* Hide the default blue underline indicator */
+    .stTabs [data-baseweb="tab-highlight"] {
+        display: none;
+    }
+    .stTabs [data-baseweb="tab-border"] {
+        display: none;
+    }
+
     h1 { color: #1a3c5e; }
     h2 { color: #2563eb; }
-    .metric-card { background: #f0f7ff; border-radius: 10px; padding: 16px; border-left: 4px solid #2563eb; }
+    .metric-card {
+        background: #f0f7ff;
+        border-radius: 10px;
+        padding: 16px;
+        border-left: 4px solid #2563eb;
+    }
 </style>
 """, unsafe_allow_html=True)
 
